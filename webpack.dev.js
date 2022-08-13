@@ -10,6 +10,5 @@ module.exports = merge(common, {
       directory: path.join(__dirname, '/public'),
     },
     historyApiFallback: true,
-    port: 8088,
   },
 });
