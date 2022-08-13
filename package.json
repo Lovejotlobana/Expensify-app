@@ -1,13 +1,16 @@
 {
-  "name": "indecision",
+  "name": "expensify",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "live-server": "live-server public --port=3308",
     "build-babel": "babel src\\app.js --out-file=public\\bundle.js --presets=env,react --watch",
-    "build": "webpack",
-    "server": "webpack-dev-server"
+    "build:dev": "webpack",
+    "build:prod": "webpack",
+    "server": "webpack-dev-server",
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "moment": "^2.29.4",
@@ -32,8 +35,10 @@
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
     "node-sass": "^7.0.1",
     "sass-loader": "^13.0.2",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "webpack-merge": "^5.8.0"
   }
 }

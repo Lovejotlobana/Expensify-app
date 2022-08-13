@@ -1,5 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
@@ -22,9 +23,11 @@ store.dispatch(sortByAmount());
 console.log(store.getState());
 
 var jsx = (
-  <Provider store={store}>
-    <AppRouter />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
+  </React.StrictMode>
 );
 // store.subscribe(() => {
 //   const state = store.getState();
@@ -40,4 +43,17 @@ var jsx = (
 //store.dispatch(setStartDate());
 // store.dispatch(setEndDate(300));
 
-ReactDOM.render(jsx, document.getElementById('app'));
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <Provider store={store}>
+//       <AppRouter />
+//     </Provider>
+//   </React.StrictMode>
+// );
+const app = ReactDOM.createRoot(document.getElementById('root'));
+app.render(
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
+);
