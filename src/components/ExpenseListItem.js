@@ -2,6 +2,7 @@ import React from 'react';
 import { removeExpense } from '../actions/expenses';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 // import configureStore from '../store/configureStore';
 // const ExpenseListItem = ({ description, amount, createdAt }) => (
 //   <div>
@@ -19,7 +20,8 @@ const ExpenseListItem = (props) => {
     <div>
       <h3>{props.expense.description}</h3>
       <p>
-        {props.expense.amount} : {props.expense.createdAt}
+        ${props.expense.amount} :{' '}
+        {moment(props.expense.createdAt).format('MMMM Do, YYYY')}
       </p>
       <button
         onClick={() => {
